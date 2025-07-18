@@ -18,10 +18,7 @@ jobs:
 
       - name: Install dependencies # Instala as dependências do seu projeto (npm install, yarn install, etc.)
         run: npm ci # 'npm ci' é preferível a 'npm install' em CI/CD para builds limpos
-
-      # Se seu Cypress testa uma aplicação web, você precisa iniciá-la antes de rodar os testes
-      - name: Start your application # Inicia o servidor da sua aplicação em background
-        run: npm start & # Ou 'yarn start &', 'node server.js &', etc. O '&' é crucial para rodar em background.
+        
       - name: Cypress run
         uses: cypress-io/github-action@v6 # Executa os testes Cypress
         with:
