@@ -29,7 +29,6 @@ jobs:
         run: npm start & # Ou 'yarn start &', 'node server.js &', etc. O '&' é crucial para rodar em background.
 
       - name: Wait for application to be ready # Espera sua aplicação estar acessível
-        uses: cypress-io/wait-on-action@v1 # Uma action útil para esperar URLs ficarem prontas
         with:
           resource: https://cac-tat.s3.eu-central-1.amazonaws.com/index.html # Substitua pela URL/porta da sua aplicação
 
