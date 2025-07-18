@@ -26,4 +26,4 @@ jobs:
         uses: cypress-io/github-action@v5
         with:
           start: npm start # Ou o comando para iniciar sua aplicação
-          wait-on: 'https://cac-tat.s3.eu-central-1.amazonaws.com/index.html' # Espera sua aplicação subir
+          
