@@ -1,10 +1,46 @@
-name: End-to-end tests
-on: push
+name: End-to-end tests # Nome do seu fluxo de trabalho
+
+on:
+  push: # Este fluxo de trabalho será acionado em cada push para qualquer branch
+    branches:
+      - main # Opcional: Especifique as branches (ex: main, develop)
+  pull_request: # Opcional: Aciona o fluxo de trabalho em pull requests
+    branches:
+      - main
+
 jobs:
   cypress-run:
-    runs-on: ubuntu-22.4
+    runs-on: ubuntu-latest # Prefira 'ubuntu-latest' para garantir a versão mais recente e evitar problemas de compatibilidade. 'ubuntu-22.04' também funciona.
+
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4 # Baixa o código do seu repositório
+
+      - name: Setup Node.js # É crucial instalar Node.js para que o npm/yarn funcione
+        uses: actions/setup-node@v4 # Use a versão mais recente da action
+        with:
+          node-version: '18' # Especifique a versão do Node.js que seu projeto usa (ou 'lts/*')
+
+      - name: Install dependencies # Instala as dependências do seu projeto (npm install, yarn install, etc.)
+        run: npm ci # 'npm ci' é preferível a 'npm install' em CI/CD para builds limpos
+
+      # Se seu Cypress testa uma aplicação web, você precisa iniciá-la antes de rodar os testes
+      - name: Start your application # Inicia o servidor da sua aplicação em background
+        run: npm start & # Ou 'yarn start &', 'node server.js &', etc. O '&' é crucial para rodar em background.
+
+      - name: Wait for application to be ready # Espera sua aplicação estar acessível
+        uses: cypress-io/wait-on-action@v1 # Uma action útil para esperar URLs ficarem prontas
+        with:
+          resource: http://localhost:3000 # Substitua pela URL/porta da sua aplicação
+
       - name: Cypress run
-        uses: cypress-io/github-action@v6
+        uses: cypress-io/github-action@v6 # Executa os testes Cypress
+        with:
+          # start: npm start # Se você já iniciou a aplicação com "Start your application" e "Wait for application...", isso não é necessário aqui.
+          # wait-on: 'http://localhost:3000' # O mesmo para wait-on.
+          # Você pode passar variáveis de ambiente para o Cypress aqui, se necessário
+          # env:
+          #   CYPRESS_BASE_URL: http://localhost:3000
+          #   CYPRESS_API_KEY: ${{ secrets.API_KEY }} # Exemplo de uso de secrets
+          build: npm run build # Se seu projeto requer um build antes de rodar (ex: projetos React/Vue)
+          command: npm run test:e2e # Ou 'cypress run', 'yarn cypress run', 'npm test' se configurado
