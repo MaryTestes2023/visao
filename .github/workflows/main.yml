@@ -1,5 +1,4 @@
-name: Cypress CI
-
+name: End-to-end tests
 on: push
 jobs:
   cypress-run:
@@ -9,14 +8,6 @@ jobs:
         uses: actions/checkout@v4
       - name: Cypress run
         uses: cypress-io/github-action@v6
-      - name: Install dependencies
-        run: npm install
-      - name: Run Cypress tests
-        run: npx cypress run
-      - name: Upload test results
-        uses: actions/upload-artifact@v3
-        with:
-          name: cypress-results
-          path: cypress/reports
+      
        
           
