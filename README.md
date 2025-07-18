@@ -23,10 +23,15 @@ Este projeto é uma aplicação vindoura do curso "Cypress, do zero a Nuvem", da
     -   Visual Code
 
  ## command line
-echo "# visao" >> README.md
+
 git init
+
 git add README.md
+
 git commit -m "first commit"
+
 git branch -M main
+
 git remote add origin https://github.com/MaryTestes2023/visao.git
+
 git push -u origin main
