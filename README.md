@@ -49,3 +49,47 @@ git push -u origin main
 # comandos para descer as atualizações do projeto
 
 git pull origin
+
+## Escrevendo um YML
+
+# ci.yml simples
+name: Cypress Tests
+
+on: [push]
+
+jobs:
+  cypress-electron-tests:  
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v4.2.2
+
+      - name: install dependencies
+        run: yarn install
+
+      - name: Run E2E tests
+        run: yarn cypress run
+
+# ci.yml com Dispatch
+
+name: Cypress Tests
+
+on:
+  workflow_dispatch:
+    inputs:
+      cli:
+        description: Run by cypress command line
+        default: yarn cypress run
+
+jobs:
+  cypress-electron-tests:  
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v4.2.2
+
+      - name: install dependencies
+        run: yarn install
+
+      - name: Run E2E tests
+        run: ${{ github.event.input.cli }}
