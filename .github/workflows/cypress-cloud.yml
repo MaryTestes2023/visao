@@ -10,10 +10,6 @@ on:
 jobs:
   cypress-e2e-electron:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
-      issues: write
     steps:
       - name: Get code
         uses: actions/checkout@v4
