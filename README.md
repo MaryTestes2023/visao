@@ -4,6 +4,9 @@ Este projeto é uma aplicação vindoura do curso "Cypress, do zero a Nuvem", da
 ## 
 - [SOBRE-O-PROJETO](#Sobre-o-projeto)
 - [FUNCIONALIDADE](Funcionalidade)
+- [TECNOLOGIAS-UTILIZADAS](Tecnologias-utilizadas)
+- [COMMAND-LINE](Command-line)
+- [ERROS-ENCONTRADOS](Erros-encontrados)
 
  ## Sobre o Projeto
    O projeto consiste em um treinamento relacionado ao curso "Cypress, do zero a Nuvem", da escola TALKING ABOUT TESTING.
@@ -22,9 +25,9 @@ Este projeto é uma aplicação vindoura do curso "Cypress, do zero a Nuvem", da
 -   **Editor de Código:**
     -   Visual Code
 
- ## command line
+ ## Command Line
 
- # iniciando um projeto no git
+ # Iniciando um projeto no git
 
 git init
 
@@ -38,7 +41,7 @@ git remote add origin https://github.com/MaryTestes2023/visao.git
 
 git push -u origin main
 
-# comandos para subir as atualizações do projeto
+# Comandos para subir as atualizações do projeto
 
 git add .
 
@@ -46,7 +49,7 @@ git commit -m "nome da atualização"
 
 git push -u origin main
 
-# comandos para descer as atualizações do projeto
+# Comandos para descer as atualizações do projeto
 
 git pull origin
 
@@ -123,3 +126,25 @@ jobs:
         env:
           CYPRESS_RECORD_KEY: b586e511-0de4-4ad6-ba26-07c75c4d4381
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+## Erros Encontrados
+
+Um dos erros encontrados ao subir o projeto para o Cypress Cloud, foi o de configuração de permissão de recursos, erro chamado: Resource not accessible by integration.
+
+Como resolver?
+
+Acesse o menu: Settings
+
+Expanda a opção: Actions
+
+Acesse a sub opção: General 
+
+Acesse "Workflow permissions"
+
+Acione a opção: Read and write permissions
+
+Logo após a opção: Allow GitHub Actions to create and approve pull requests
+
+Por fim, acione o botão: "Save"
+
+![setting-git-hub](assets/screenshot.png)
