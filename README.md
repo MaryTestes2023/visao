@@ -147,4 +147,3 @@ Logo após a opção: Allow GitHub Actions to create and approve pull requests
 
 Por fim, acione o botão: "Save"
 
-![setting-git-hub](assets/screenshot.png)
