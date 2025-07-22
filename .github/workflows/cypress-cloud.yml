@@ -18,7 +18,7 @@ jobs:
         uses: cypress-io/github-action@v6.5.0
         with:
           install-command: yarn install
-          brouwser: electron
+          browser: electron
           record: true
           group: UI Electron
           spec: ${{ github.event.inputs.spec }}
