@@ -41,6 +41,8 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6.5.0
         with:
+          name: cypress-results
+          path: cypress/videos
           install-command: yarn install
           browser: chrome
           record: true
@@ -62,6 +64,8 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6.5.0
         with:
+          name: cypress-results
+          path: cypress/videos
           install-command: yarn install
           browser: firefox
           record: true
