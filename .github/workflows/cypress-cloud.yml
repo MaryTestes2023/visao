@@ -42,9 +42,9 @@ jobs:
         uses: cypress-io/github-action@v6.5.0
         with:
           install-command: yarn install
-          browser: crhome
+          browser: chrome
           record: true
-          group: UI Crhome
+          group: UI Chrome
           spec: ${{ github.event.inputs.spec }}
         env:
           CYPRESS_RECORD_KEY: b586e511-0de4-4ad6-ba26-07c75c4d4381
